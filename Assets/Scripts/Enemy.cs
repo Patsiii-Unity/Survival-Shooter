@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         //Nach einer bestimmten Anzahl Kills werden neu Waffen zum Spawnen freigeschaltet
-        if (EnemySpawnSystem.killCounter >= 5 && EnemySpawnSystem.killCounter < 50)
+        if (EnemySpawnSystem.killCounter >= 20 && EnemySpawnSystem.killCounter < 50)
         {
             max = 3;    //beinhaltet Golden Gun
         }

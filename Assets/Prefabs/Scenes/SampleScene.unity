@@ -408,6 +408,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 571966290}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &120969986
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4844598306020745573, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_Name
+      value: Golden Gun (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.698
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.838
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000087422785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ef11724563f6684995481e7ccb0b0c4, type: 3}
 --- !u!1 &143361760
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: soundID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344360049233378293, guid: e9c4a0ed7572172429c7d5ae58a80b20,
+        type: 3}
+      propertyPath: dropped
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9043056399936467994, guid: e9c4a0ed7572172429c7d5ae58a80b20,
         type: 3}
@@ -8564,6 +8638,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747481188}
   m_CullTransparentMesh: 0
+--- !u!1001 &1772488595
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4844598306020745573, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_Name
+      value: Golden Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.553
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.829
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000087422785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844598306020745579, guid: 1ef11724563f6684995481e7ccb0b0c4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ef11724563f6684995481e7ccb0b0c4, type: 3}
 --- !u!4 &1807879417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2902587518843380297, guid: dd6b5d74aa92d2444b1d3bfbcf6d8f76,

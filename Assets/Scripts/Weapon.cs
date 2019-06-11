@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
     //Variable für das Partikelsystem
     public ParticleSystem particles;
     public ParticleSystem smoke;
+    public ParticleSystem dropped;  
 
     //Start
     void Start()
@@ -57,6 +58,11 @@ public class Weapon : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().setMaxAmmo(ammo, gameObject);
             GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().setAmmo(ammo, gameObject);
             alr = true;
+
+            if (dropped != null)
+            {
+                dropped.Stop();
+            }
         }
 
         //Countdown

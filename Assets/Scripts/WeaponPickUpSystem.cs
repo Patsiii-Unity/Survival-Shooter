@@ -33,6 +33,9 @@ public class WeaponPickUpSystem : MonoBehaviour
     //Damit der Mafia Boss Sound nur 1mal abgespielt wird
     public bool soundPlaying = false;
 
+    //verhindert dass 2 Waffen auf einmal aufgenommen werden
+    float cooldown = 0.25f;
+
     //Animator
     public Animator animator;
 
@@ -43,7 +46,7 @@ public class WeaponPickUpSystem : MonoBehaviour
         {
 
             //Wenn man die Waffe berührt und "e" drückt wird diese aufgehoben
-            if (Input.GetButton("Interaction") && collisionInfo.gameObject != weapon)
+            if (Input.GetButton("Interaction") && collisionInfo.gameObject != weapon && cooldown <= 0)
             {
                 //Ist bereits eine Waffe ausgerüstet wird diese zerstört
                 if (weapon != null)
@@ -69,7 +72,16 @@ public class WeaponPickUpSystem : MonoBehaviour
                     equipDefW = true;
                 }
 
+                //Cooldown für das Ausrüsten von Waffen wird zurückgesetzt
+                cooldown = 0.25f;
             }
+
+            //Cooldown wird runtergezählt
+            if(cooldown > 0)
+            {
+                cooldown -= Time.deltaTime;
+            }
+
         }
         else if (collisionInfo.gameObject.tag == "Heart")
         {
