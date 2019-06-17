@@ -11,11 +11,11 @@ public class Enemy : MonoBehaviour
 
     AudioManager audioManager;
 
-    //Max wird für die Zufallsgenerierung, wo entschieden wird welche Waffe gedroppt wird
-    int max = 2;
-
     //Partikel Systeme
     public ParticleSystem killParticles;
+
+    //Enemy Animator
+    public Animator animator;
 
     //Start
     void Start()
@@ -33,6 +33,9 @@ public class Enemy : MonoBehaviour
         //Schaden wird erlitten
         health = health - damage;
 
+        //Schadens-Animation wird abgespielt
+        animator.SetTrigger("Hit");
+
         //Wenn die Lebenspunkte kleiner als oder gleich 0 sind wird das Objekt zerstört;
         if (health <= 0)
         {
@@ -49,24 +52,27 @@ public class Enemy : MonoBehaviour
             //Es wird zufallsgeneriert ob Loot gedroppt wird
             if (Random.Range(1, GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawnSystem>().maxRandomValue) == 1)
             {
-                //Es wird zufallsgeneriert welcher Loot gedroppt wird
-                randomLootNum = Random.Range(1, max);
+                //Es wird zufallsgeneriert welcher Loot gedroppt wirds
+                //Max + 1, weil der maximale Wert exklusiv ist
+                randomLootNum = Random.Range(1, 101);
 
-                if (randomLootNum == 1)
+                Debug.Log(randomLootNum);
+
+                if (randomLootNum > 0 && randomLootNum <= 30)       
                 {
-                    manager.Spawn(gameObject.transform, "Shotgun");
+                    manager.Spawn(gameObject.transform, "Shotgun");     //Spawnwarscheinlichkeit: 30%
                 }
-                else if (randomLootNum == 2)
+                else if (randomLootNum > 30 && randomLootNum <= 60)
                 {
-                    manager.Spawn(gameObject.transform, "Golden Gun");
+                    manager.Spawn(gameObject.transform, "Golden Gun");  //Spawnwarscheinlichkeit: 30%
                 }
-                else if (randomLootNum == 3)
+                else if (randomLootNum > 60 && randomLootNum <= 90)
                 {
-                    manager.Spawn(gameObject.transform, "VAPR-XKG");
+                    manager.Spawn(gameObject.transform, "VAPR-XKG");    //Spawnwarscheinlichkeit: 30%
                 }
-                else if (randomLootNum == 4)
+                else if (randomLootNum > 90 && randomLootNum <= 100)
                 {
-                    manager.Spawn(gameObject.transform, "Minigun");
+                    manager.Spawn(gameObject.transform, "Minigun");     //Spawnwarscheinlichkeit: 10%
                 }
 
                 //LootDropSound abspielen
@@ -104,23 +110,6 @@ public class Enemy : MonoBehaviour
         if(collisionInfo.gameObject.tag == "Ground")
         {
             GetComponent<EnemyFollow>().enabled = true;
-        }
-    }
-
-    void Update()
-    {
-        //Nach einer bestimmten Anzahl Kills werden neu Waffen zum Spawnen freigeschaltet
-        if (EnemySpawnSystem.killCounter >= 20 && EnemySpawnSystem.killCounter < 50)
-        {
-            max = 3;    //beinhaltet Golden Gun
-        }
-        else if (EnemySpawnSystem.killCounter >= 50 && EnemySpawnSystem.killCounter < 75)
-        {
-            max = 4;    //beinhaltet VAPR-XKG
-        }
-        else if (EnemySpawnSystem.killCounter >= 75)
-        {
-            max = 5;    //beinhaltet Minigun
         }
     }
 }

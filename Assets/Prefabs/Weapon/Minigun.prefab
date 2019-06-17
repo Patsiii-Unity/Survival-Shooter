@@ -4697,7 +4697,7 @@ ParticleSystem:
 --- !u!199 &9169027039179946772
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9395,7 +9395,7 @@ ParticleSystem:
 --- !u!199 &9169027039887539736
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9629,7 +9629,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0.05
-  ammo: 75
+  weaponTimer: 10
+  ammo: -1
   pickedUp: 0
   soundID: 3
   animator: {fileID: 9169027040136436549}
@@ -9671,7 +9672,7 @@ PrefabInstance:
     - target: {fileID: 5302177180931910090, guid: a72dd775c97334045aea0959b2c4b8d7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38292465
+      value: 0.107
       objectReference: {fileID: 0}
     - target: {fileID: 5302177180931910090, guid: a72dd775c97334045aea0959b2c4b8d7,
         type: 3}

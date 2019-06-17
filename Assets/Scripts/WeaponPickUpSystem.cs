@@ -14,6 +14,9 @@ public class WeaponPickUpSystem : MonoBehaviour
     public int maxAmmo;
     public int ammo;
 
+    //zeigt die aktuelle Zeit des Timers an
+    public float weaponTime;
+
     //Player Damage Script
     public GetDamage getDamage;
 
@@ -29,6 +32,9 @@ public class WeaponPickUpSystem : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI maxAmmoText;
     public TextMeshProUGUI ammoLine;
+
+    //Timer Texts
+    public TextMeshProUGUI weaponTimeText;
 
     //Damit der Mafia Boss Sound nur 1mal abgespielt wird
     public bool soundPlaying = false;
@@ -171,6 +177,9 @@ public class WeaponPickUpSystem : MonoBehaviour
         ammoText.text = ammo.ToString();
         maxAmmoText.text = maxAmmo.ToString();
 
+        //Weapontime Text wird aktualisiert & wenn nötig deaktiviert bzw. aktiviert
+        weaponTimeText.text = weaponTime.ToString("0");
+
         textActivation();
         
     }
@@ -196,11 +205,21 @@ public class WeaponPickUpSystem : MonoBehaviour
             maxAmmo = ammo;
         }
     }
+    //Die aktuelle Timerzeit wird definiert
+    public void setWeaponTime(float timer, GameObject weapon)
+    {
+        //Es wird überprüft ob die ausgerüstete Waffe die Timeranzeige ändern will & nicht eine nicht ausgerüstete
+        //Verhindert dass eine neu gespawnte Waffe die Anzeige verändert
+        if (this.weapon == weapon)
+        {
+            weaponTime = timer;
+        }
+    }
 
     //Methode für die Aktivierung der Munitionsanzeige
     void textActivation()
     {
-        if(ammoText.text.Equals("0"))
+        if(ammoText.text.Equals("0") || ammoText.text.Equals("-1"))
         {
             ammoText.enabled = false;
             maxAmmoText.enabled = false;
@@ -211,6 +230,15 @@ public class WeaponPickUpSystem : MonoBehaviour
             ammoText.enabled = true;
             maxAmmoText.enabled = true;
             ammoLine.enabled = true;
+        }
+
+        if(weaponTimeText.text.Equals("-1"))
+        {
+            weaponTimeText.enabled = false;
+        }
+        else
+        {
+            weaponTimeText.enabled = true;
         }
     }
 }

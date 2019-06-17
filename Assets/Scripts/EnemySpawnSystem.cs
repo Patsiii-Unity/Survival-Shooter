@@ -21,6 +21,9 @@ public class EnemySpawnSystem : MonoBehaviour
     //Spawnrate für Waffen
     public int maxRandomValue;
 
+    //Animator des Endbosses
+    public Animator endboss;
+
     void Start()
     {
         //Da es static ist muss der killCounter am Anfang immer auf 0 gesetzt werden
@@ -74,7 +77,7 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMin = 2.5f;
             timerMax = 6f;
 
-            maxRandomValue = 8;
+            maxRandomValue = 7;
         }
         
         //easy
@@ -83,7 +86,7 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMin = 2.5f;
             timerMax = 5f;
 
-            maxRandomValue = 8;
+            maxRandomValue = 7;
         }
         //medium
         if (killCounter == 30)
@@ -91,7 +94,7 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMin = 2f;
             timerMax = 5f;
 
-            maxRandomValue = 8;
+            maxRandomValue = 7;
         }
         //hard
         if (killCounter == 40)
@@ -99,7 +102,7 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMin = 1.5f;
             timerMax = 5f;
 
-            maxRandomValue = 7;
+            maxRandomValue = 6;
         }
         //very hard
         if (killCounter == 50)
@@ -107,7 +110,7 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMin = 1.5f;
             timerMax = 4.5f;
 
-            maxRandomValue = 7;
+            maxRandomValue = 6;
         }
         //ultra hard
         if (killCounter == 60)
@@ -115,7 +118,7 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMin = 1.25f;
             timerMax = 4.25f;
 
-            maxRandomValue = 7;
+            maxRandomValue = 6;
         }
         //epic
         if (killCounter == 70)
@@ -131,7 +134,7 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMin = 1f;
             timerMax = 3.75f;
 
-            maxRandomValue = 6;
+            maxRandomValue = 5;
         }
         //impossible
         if (killCounter == 90)
@@ -148,6 +151,12 @@ public class EnemySpawnSystem : MonoBehaviour
             timerMax = 2f;
 
             maxRandomValue = 5;
+        }
+
+        //Endboss erwacht bei 150 
+        if(killCounter == 10)
+        {
+            endboss.SetTrigger("Awake");
         }
     }
 

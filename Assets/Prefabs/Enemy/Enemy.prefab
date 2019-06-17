@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 139135578683281139}
   - component: {fileID: 1535962576377993290}
   - component: {fileID: 2278319362830724735}
+  - component: {fileID: 1741758254008261975}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.020877719}
+  m_Offset: {x: 0, y: -0.026070237}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36211413, y: 0.94269156}
+  m_Size: {x: 0.36211413, y: 0.9323065}
   m_EdgeRadius: 0
 --- !u!50 &139135578683281139
 Rigidbody2D:
@@ -124,7 +125,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -157,3 +158,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   killParticles: {fileID: 4107285269732621093, guid: 9e2c78d2cc494564caef04ae82a65569,
     type: 3}
+  animator: {fileID: 1741758254008261975}
+--- !u!95 &1741758254008261975
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744312014456336121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bf092918f2a6ed46b076bc9665d2136, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

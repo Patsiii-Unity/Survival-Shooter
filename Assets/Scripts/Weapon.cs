@@ -5,7 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     //Variablendefinition
-    public float timer = 0.33f;
+    public float timer = 0.33f;         //Zeit die vergeht bis der nächste Schuss abgesetzt wird
+    public float weaponTimer = 30f;     //Zeigt die Zeit an wie lange man die Waffe verwenden kann bis sie wieder abgelegt wird
 
     //max Munition
     public int ammo = 0;
@@ -57,6 +58,7 @@ public class Weapon : MonoBehaviour
             //Munitionstext wird aktualisiert
             GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().setMaxAmmo(ammo, gameObject);
             GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().setAmmo(ammo, gameObject);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().setWeaponTime(timer, gameObject);
             alr = true;
 
             if (dropped != null)
@@ -69,7 +71,7 @@ public class Weapon : MonoBehaviour
         timer -= Time.deltaTime;
 
         //Wenn man die "Fire1" Taste drückt, der Counter kleiner gleich 0 ist, die Waffe ausgerüstet ist und das Spiel nicht pausiert ist wird geschossen 
-        if (Input.GetButtonDown("Fire1") && timer <= 0 && pickedUp == true && PauseMenü.GameIsPaused == false && gameObject.tag != "AutoWeapon")
+        if (Input.GetButtonDown("Fire1") && timer <= 0 && pickedUp == true && PauseMenü.GameIsPaused == false && gameObject.tag != "AutoWeapon" && weaponTimer == -1)
         {
             //es wird geschossen
             GetComponent<Shoot>().shoot();
@@ -114,9 +116,10 @@ public class Weapon : MonoBehaviour
             //Munition wird verringert
             deAmmo();
         }
+
         else if(gameObject.tag == "AutoWeapon")
         {
-            if(Input.GetButton("Fire1") && timer <= 0 && pickedUp == true && PauseMenü.GameIsPaused == false && ammo != 0)
+            if (Input.GetButton("Fire1") && timer <= 0 && pickedUp == true && PauseMenü.GameIsPaused == false && ammo != 0 && weaponTimer == -1)
             {
                 //es wird geschossen
                 GetComponent<Shoot>().shoot();
@@ -173,31 +176,88 @@ public class Weapon : MonoBehaviour
                 //Munition wird verringert
                 deAmmo();
             }
-            if (Input.GetButtonUp("Fire1") && pickedUp == true && PauseMenü.GameIsPaused == false)
-            {
-                //Handelt es sich um eine Minigun wird der Cooldown gesetzt
-                if(soundID == 3)
+
+            else if (Input.GetButton("Fire1") && timer <= 0 && pickedUp == true && PauseMenü.GameIsPaused == false && ammo == -1 && weaponTimer > 0)
                 {
-                    //Cooldown Sound bei Minigun
-                    audioManager.Play("Minigun Cooldown");
+                    //es wird geschossen
+                    GetComponent<Shoot>().shoot();
 
-                    //Cooldown Timer wird gesetzt
-                    timer = 1f;
+                    //Timer wird zurückgesetzt
+                    timer = safeTime;
 
-                    //Partikel werden gestoppt
+                    //Schuss-Sound wird abgegeben
+                    if (soundID == 0)
+                    {
+                        audioManager.Play("GunShot");
+                    }
+                    else if (soundID == 1)
+                    {
+                        audioManager.Play("Shotgun");
+                    }
+                    else if (soundID == 2)
+                    {
+                        audioManager.Play("VAPR-XKG");
+                    }
+                    else if (soundID == 3)
+                    {
+                        audioManager.Play("Minigun");
+                    }
+
+                    //Animation
+                    if (animator != null)
+                    {
+                        animator.SetTrigger("Shoot");
+                    }
+
+                    //Camera Shake wird durchgeführt
+                    if (shakeID == 0)
+                    {
+                        shake.GunShake1();
+                    }
+                    else if (shakeID == 1)
+                    {
+                        shake.ShotGunShake1();
+                    }
+
+                    //Partikel werden abgespielt
+                    playParticles();
+
                     if (smoke != null)
                     {
-                        if (smoke.isPlaying == true)
+                        if (smoke.isPlaying == false)
                         {
-                            smoke.Stop();
+                            smoke.Play();
                         }
+                    }
+                }
+            }
+
+            //Minigun cooldown sound wird abgespielt & cooldown timer wird gesetzt
+            if (Input.GetButtonUp("Fire1") && pickedUp == true && PauseMenü.GameIsPaused == false)
+            {
+            //Handelt es sich um eine Minigun wird der Cooldown gesetzt
+            if(soundID == 3)
+            {
+                //Cooldown Sound bei Minigun
+                audioManager.Play("Minigun Cooldown");
+
+                //Cooldown Timer wird gesetzt
+                timer = 0.5f;
+
+                //Partikel werden gestoppt
+                if (smoke != null)
+                {
+                    if (smoke.isPlaying == true)
+                    {
+                        smoke.Stop();
                     }
                 }
             }
         }
 
-        //Munitionstext wird aktualisiert
+        //Munitionstext & Weapontimertext wird aktualisiert
         GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().setAmmo(ammo, gameObject);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().setWeaponTime(weaponTimer, gameObject);
 
         //Objekt wird zerstört wenn die Munition 0 beträgt
         if (ammo == 0 && gameObject.tag != "DefWeapon")
@@ -211,6 +271,19 @@ public class Weapon : MonoBehaviour
                 }
             }
             else {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().weapon = null;
+                Destroy(gameObject);
+            }
+        }
+
+        //Wenn die Waffe nicht mit Munition verwaltet wird sondern mit Zeit & die Waffe bereits ausgerüstet wurde, dann wird die Zeit runtergezählt
+        if(weaponTimer > 0 && ammo == -1 && pickedUp == true)
+        {
+            //Ist die Zeit 0, wird die Waffe zerstört
+            weaponTimer -= Time.deltaTime;
+
+            if (weaponTimer <= 0 && weaponTimer > -1)
+            {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponPickUpSystem>().weapon = null;
                 Destroy(gameObject);
             }

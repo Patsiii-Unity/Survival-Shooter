@@ -143,6 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 141297635273413597}
   speed: 30
-  damage: 17
+  damage: 13
   despawnTime: 0.5
   impact: {fileID: 0}
