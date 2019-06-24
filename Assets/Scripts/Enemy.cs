@@ -56,23 +56,21 @@ public class Enemy : MonoBehaviour
                 //Max + 1, weil der maximale Wert exklusiv ist
                 randomLootNum = Random.Range(1, 101);
 
-                Debug.Log(randomLootNum);
-
-                if (randomLootNum > 0 && randomLootNum <= 30)       
+                if (randomLootNum > 0 && randomLootNum <= 35)       
                 {
-                    manager.Spawn(gameObject.transform, "Shotgun");     //Spawnwarscheinlichkeit: 30%
+                    manager.Spawn(gameObject.transform, "Shotgun", false);     //Spawnwarscheinlichkeit: 35%
                 }
-                else if (randomLootNum > 30 && randomLootNum <= 60)
+                else if (randomLootNum > 35 && randomLootNum <= 70)
                 {
-                    manager.Spawn(gameObject.transform, "Golden Gun");  //Spawnwarscheinlichkeit: 30%
+                    manager.Spawn(gameObject.transform, "Golden Gun", false);  //Spawnwarscheinlichkeit: 35%
                 }
-                else if (randomLootNum > 60 && randomLootNum <= 90)
+                else if (randomLootNum > 70 && randomLootNum <= 95)
                 {
-                    manager.Spawn(gameObject.transform, "VAPR-XKG");    //Spawnwarscheinlichkeit: 30%
+                    manager.Spawn(gameObject.transform, "VAPR-XKG", false);    //Spawnwarscheinlichkeit: 25%
                 }
-                else if (randomLootNum > 90 && randomLootNum <= 100)
+                else if (randomLootNum > 95 && randomLootNum <= 100)
                 {
-                    manager.Spawn(gameObject.transform, "Minigun");     //Spawnwarscheinlichkeit: 10%
+                    manager.Spawn(gameObject.transform, "Minigun", false);     //Spawnwarscheinlichkeit: 5%
                 }
 
                 //LootDropSound abspielen
@@ -81,7 +79,7 @@ public class Enemy : MonoBehaviour
             //Wenn keine Waffe spawnt ist die Chance 1 zu 50, dass ein Herz spawnt
             else if (Random.Range(0, 50) == 0) {
 
-                manager.Spawn(gameObject.transform, "Full Heart");
+                manager.Spawn(gameObject.transform, "Full Heart", false);
 
                 //LootDropSound abspielen
                 audioManager.Play("LootDropSound");

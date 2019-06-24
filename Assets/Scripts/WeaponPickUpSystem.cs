@@ -45,6 +45,15 @@ public class WeaponPickUpSystem : MonoBehaviour
     //Animator
     public Animator animator;
 
+    //Camera-Shake Objekt für Shake oder Zoom Animationen an der Kamera
+    public Shake cameraShake;
+
+    //Lootdropmanager für Waffenspawns
+    public LootDropManager manager;
+
+    //Sorgt dafür das bestimmte Waffen nur einmal gespawnt werden
+    bool bossWeaponAlr = false;
+
     //Trigger-Stay
     void OnTriggerStay2D(Collider2D collisionInfo)
     {
@@ -79,7 +88,7 @@ public class WeaponPickUpSystem : MonoBehaviour
                 }
 
                 //Cooldown für das Ausrüsten von Waffen wird zurückgesetzt
-                cooldown = 0.25f;
+                cooldown = 0.25f;               
             }
 
             //Cooldown wird runtergezählt
@@ -92,7 +101,7 @@ public class WeaponPickUpSystem : MonoBehaviour
         else if (collisionInfo.gameObject.tag == "Heart")
         {
             //Wenn man die Waffe berührt und "e" drückt wird diese aufgehoben
-            if (Input.GetButtonDown("Interaction") && getDamage.health < 3)
+            if (Input.GetButton("Interaction") && getDamage.health < 3)
             {
                 //Gesundheit wird um eins erhöht
                 getDamage.health = getDamage.health + 1;
@@ -106,6 +115,17 @@ public class WeaponPickUpSystem : MonoBehaviour
                 //Herz wird zerstört
                 Destroy(collisionInfo.gameObject);
             }
+        }
+
+        //Wenn man bei Lvl 100 ist und mit dem Endboss interagiert, dann wird eine speziele Waffe gespawnt 
+        if (collisionInfo.gameObject.tag == "Endboss" && Input.GetButton("Interaction") && EnemySpawnSystem.killCounter == 100 && bossWeaponAlr == false)
+        {
+            //Die Waffe wird mit selbst bestimmten Koordinaten gespawnt
+            manager.Spawn(collisionInfo.gameObject.transform, "EndbossTreeWeapon", false, 1.887589f, -0.561191f, -1f);
+            bossWeaponAlr = true;
+
+            //LootDropSound abspielen
+            audioManager.Play("LootDropSound");
         }
     }
 
@@ -133,6 +153,77 @@ public class WeaponPickUpSystem : MonoBehaviour
 
             spawnProtection = false;
         }
+
+        else if (collisionInfo.gameObject.tag == "Weapon" || collisionInfo.gameObject.tag == "MafiaBoss Weapon" || collisionInfo.gameObject.tag == "AutoWeapon")
+        {
+
+            //Wenn man die Waffe berührt und "e" drückt wird diese aufgehoben
+            if (Input.GetButton("Interaction") && collisionInfo.gameObject != weapon && cooldown <= 0)
+            {
+                //Ist bereits eine Waffe ausgerüstet wird diese zerstört
+                if (weapon != null)
+                {
+                    Destroy(weapon);
+                }
+
+                //Objekt wird abgespeichert
+                weapon = collisionInfo.gameObject;
+
+                //PickUp-Sound wird abgespielt
+                audioManager.Play("Gun Cocking");
+
+                //Waffe aufgehoben
+                collisionInfo.gameObject.GetComponent<Weapon>().pickUp();
+
+                //Schießen wird aktiviert
+                collisionInfo.gameObject.GetComponent<Weapon>().enabled = true;
+
+                //equipDefW wird auf true gesetzt
+                if (equipDefW == false)
+                {
+                    equipDefW = true;
+                }
+
+                //Cooldown für das Ausrüsten von Waffen wird zurückgesetzt
+                cooldown = 0.25f;
+            }
+
+            //Cooldown wird runtergezählt
+            if (cooldown > 0)
+            {
+                cooldown -= Time.deltaTime;
+            }
+        }
+        
+        else if (collisionInfo.gameObject.tag == "Heart")
+        {
+            //Wenn man die Waffe berührt und "e" drückt wird diese aufgehoben
+            if (Input.GetButton("Interaction") && getDamage.health < 3)
+            {
+                //Gesundheit wird um eins erhöht
+                getDamage.health = getDamage.health + 1;
+
+                //Particle Spawn
+                collisionInfo.gameObject.GetComponent<SpawnParticles>().spawn();
+
+                //Heart Pick Up sound
+                audioManager.Play("Heart");
+
+                //Herz wird zerstört
+                Destroy(collisionInfo.gameObject);
+            }
+        }
+
+        //Wenn man bei Lvl 100 ist und mit dem Endboss interagiert, dann wird eine speziele Waffe gespawnt 
+        if (collisionInfo.gameObject.tag == "Endboss" && Input.GetButton("Interaction") && EnemySpawnSystem.killCounter == 100 && bossWeaponAlr == false)
+        {
+            //Die Waffe wird mit selbst bestimmten Koordinaten gespawnt
+            manager.Spawn(collisionInfo.gameObject.transform, "EndbossTreeWeapon", false, 1.887589f, -0.561191f, -1f);
+            bossWeaponAlr = true;
+
+            //LootDropSound abspielen
+            audioManager.Play("LootDropSound");
+        }
     }
 
     //Update Method
@@ -147,8 +238,10 @@ public class WeaponPickUpSystem : MonoBehaviour
             //Überprüfung ob es sich um eine Waffe mit besonderem Tag handelt
             if (weapon.tag == "MafiaBoss Weapon" && soundPlaying == false)
             {
+                //Player Mafia Boss Transformations Animation
                 animator.SetBool("MafiaBoss Transform", true);
-
+              
+                //Starts Mafia Boss Music
                 audioManager.Stop("Theme");
                 audioManager.Play("LvL Up");
                 audioManager.Play("Pump");
@@ -159,6 +252,7 @@ public class WeaponPickUpSystem : MonoBehaviour
             {
                 animator.SetBool("MafiaBoss Transform", false);
 
+                //Stops Mafia Boss Music
                 audioManager.Stop("Pump");
                 audioManager.Play("Theme");
 
@@ -168,7 +262,7 @@ public class WeaponPickUpSystem : MonoBehaviour
         else if(weapon == null && equipDefW == true && spawnProtection == false)
         {
             //Standart Waffe wird gespawnt
-            lootDropManager.Spawn(weaponpoint, "Gun");
+            lootDropManager.Spawn(weaponpoint, "Gun", true);
 
             spawnProtection = true;
         }

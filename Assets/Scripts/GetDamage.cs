@@ -5,7 +5,7 @@ public class GetDamage : MonoBehaviour
     //Variablendefinition
     public int health = 3;
 
-    public float cooldown = 3f;
+    public float cooldown = 2f;
 
     float safeCooldown;
 
@@ -32,6 +32,7 @@ public class GetDamage : MonoBehaviour
 
         cooldown -= Time.deltaTime;
 
+        //Lebensanzeige
         if(health == 3)
         {
             threeHearts.SetActive(true);
@@ -86,7 +87,7 @@ public class GetDamage : MonoBehaviour
                 audioManager.Play("Game Over 3");
             }
 
-            //Weapon gets destroyed
+            //Waffe wird zerstört
             if (GetComponent<WeaponPickUpSystem>().weapon == null)
             {
                 return;

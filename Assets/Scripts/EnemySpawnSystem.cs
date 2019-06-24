@@ -11,8 +11,8 @@ public class EnemySpawnSystem : MonoBehaviour
     public static int killCounter;
 
     //Ultra easy 
-    public float timerMin = 3f;
-    public float timerMax = 7f;
+    public float timerMin = 2.5f;
+    public float timerMax = 5f;
 
     Vector3 spawnPoint;
 
@@ -75,7 +75,7 @@ public class EnemySpawnSystem : MonoBehaviour
         if(killCounter == 10)
         {
             timerMin = 2.5f;
-            timerMax = 6f;
+            timerMax = 4.5f;
 
             maxRandomValue = 7;
         }
@@ -83,8 +83,8 @@ public class EnemySpawnSystem : MonoBehaviour
         //easy
         if (killCounter == 20)
         {
-            timerMin = 2.5f;
-            timerMax = 5f;
+            timerMin = 2f;
+            timerMax = 4.5f;
 
             maxRandomValue = 7;
         }
@@ -92,7 +92,7 @@ public class EnemySpawnSystem : MonoBehaviour
         if (killCounter == 30)
         {
             timerMin = 2f;
-            timerMax = 5f;
+            timerMax = 4f;
 
             maxRandomValue = 7;
         }
@@ -100,7 +100,7 @@ public class EnemySpawnSystem : MonoBehaviour
         if (killCounter == 40)
         {
             timerMin = 1.5f;
-            timerMax = 5f;
+            timerMax = 4f;
 
             maxRandomValue = 6;
         }
@@ -108,54 +108,51 @@ public class EnemySpawnSystem : MonoBehaviour
         if (killCounter == 50)
         {
             timerMin = 1.5f;
-            timerMax = 4.5f;
+            timerMax = 3.5f;
 
             maxRandomValue = 6;
         }
         //ultra hard
         if (killCounter == 60)
         {
-            timerMin = 1.25f;
-            timerMax = 4.25f;
+            timerMin = 1.5f;
+            timerMax = 3f;
 
             maxRandomValue = 6;
         }
         //epic
         if (killCounter == 70)
         {
-            timerMin = 1f;
-            timerMax = 4f;
+            timerMin = 1.25f;
+            timerMax = 3f;
 
             maxRandomValue = 6;
         }
         //legendary
         if (killCounter == 80)
         {
-            timerMin = 1f;
-            timerMax = 3.75f;
+            timerMin = 1.25f;
+            timerMax = 2.5f;
 
             maxRandomValue = 5;
         }
         //impossible
         if (killCounter == 90)
         {
-            timerMin = 0.75f;
-            timerMax = 3.25f;
+            timerMin = 1.25f;
+            timerMax = 2.25f;
 
             maxRandomValue = 5;
         }
         //hell fire
         if (killCounter >= 100)
         {
-            timerMin = 0.5f;
+            timerMin = 1f;
             timerMax = 2f;
 
             maxRandomValue = 5;
-        }
 
-        //Endboss erwacht bei 150 
-        if(killCounter == 10)
-        {
+            //Endboss Erwachungs-Animation
             endboss.SetTrigger("Awake");
         }
     }

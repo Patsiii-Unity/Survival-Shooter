@@ -3,8 +3,7 @@
 --- !u!1 &2738562212890829805
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903942013782759, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -22,8 +21,7 @@ GameObject:
 --- !u!4 &2738562212890829778
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903942013782744, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562212890829805}
@@ -37,8 +35,7 @@ Transform:
 --- !u!198 &2738562212890829804
 ParticleSystem:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903942013782758, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562212890829805}
@@ -1421,6 +1418,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
+    serializedVersion: 2
     enabled: 0
     mode: 0
     timeMode: 0
@@ -1538,7 +1536,7 @@ ParticleSystem:
     rowIndex: 0
     cycles: 1
     uvChannelMask: -1
-    randomRow: 1
+    rowMode: 1
     sprites:
     - sprite: {fileID: 0}
     flipU: 0
@@ -2349,8 +2347,61 @@ ParticleSystem:
     inWorldSpace: 1
     randomizePerFrame: 0
   ExternalForcesModule:
+    serializedVersion: 2
     enabled: 0
-    multiplier: 1
+    multiplierCurve:
+      serializedVersion: 2
+      minMaxState: 0
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
     influenceFilter: 0
     influenceMask:
       serializedVersion: 2
@@ -4700,9 +4751,8 @@ ParticleSystem:
 --- !u!199 &2738562212890829779
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 7749903942013782745, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562212890829805}
@@ -4725,6 +4775,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4763,8 +4814,7 @@ ParticleSystemRenderer:
 --- !u!1 &2738562212953607277
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903942227830119, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -4780,8 +4830,7 @@ GameObject:
 --- !u!4 &2738562212953607276
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903942227830118, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562212953607277}
@@ -4795,8 +4844,7 @@ Transform:
 --- !u!1 &2738562213243499053
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903943540693799, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -4816,13 +4864,12 @@ GameObject:
 --- !u!4 &2738562213243499024
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903943540693786, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562213243499053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.789, y: -0.754, z: 0}
+  m_LocalPosition: {x: -0.789, y: -0.754, z: -0.06}
   m_LocalScale: {x: 0.5937, y: 0.5937, z: 0.5937}
   m_Children:
   - {fileID: 2738562212953607276}
@@ -4834,8 +4881,7 @@ Transform:
 --- !u!212 &2738562213243499025
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903943540693787, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562213243499053}
@@ -4857,6 +4903,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4883,8 +4930,7 @@ SpriteRenderer:
 --- !u!61 &2738562213243499026
 BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903943540693784, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562213243499053}
@@ -4910,8 +4956,7 @@ BoxCollider2D:
 --- !u!114 &2738562213243499027
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903943540693785, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562213243499053}
@@ -4922,7 +4967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0.1
   weaponTimer: -1
-  ammo: 24
+  ammo: 20
   pickedUp: 0
   soundID: 2
   animator: {fileID: 0}
@@ -4933,8 +4978,7 @@ MonoBehaviour:
 --- !u!114 &2738562213243499052
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7749903943540693798, guid: 23325c58d98e3ad4dab9c8f6617acb8b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738562213243499053}
@@ -4952,11 +4996,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2738562213243499024}
     m_Modifications:
-    - target: {fileID: 5302177180931910095, guid: a72dd775c97334045aea0959b2c4b8d7,
-        type: 3}
-      propertyPath: m_Name
-      value: Lootdrop Particle System
-      objectReference: {fileID: 0}
     - target: {fileID: 5302177180931910089, guid: a72dd775c97334045aea0959b2c4b8d7,
         type: 3}
       propertyPath: SubModule.enabled
@@ -5016,6 +5055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302177180931910095, guid: a72dd775c97334045aea0959b2c4b8d7,
+        type: 3}
+      propertyPath: m_Name
+      value: Lootdrop Particle System
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a72dd775c97334045aea0959b2c4b8d7, type: 3}
