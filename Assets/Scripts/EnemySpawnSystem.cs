@@ -3,7 +3,10 @@
 public class EnemySpawnSystem : MonoBehaviour
 {
     //Variablendefinition
-    public GameObject enemy;
+
+    //Gegner Prefabs
+    public GameObject enemy;        //Standart "Enemy" Prefab
+    public GameObject acorn;        //Eichel Prefab (Endboss Attacke)
 
     public Transform spawnPointLeft;
     public Transform spawnPointRight;
@@ -16,7 +19,11 @@ public class EnemySpawnSystem : MonoBehaviour
 
     Vector3 spawnPoint;
 
-    float timer = 5f;
+    float timer = 5f;           //Timer für das Spawnen von "Enemys"
+    float acornTimer = 1f;      //Timer für das Spawnen von "Eicheln"
+    float saveAcornTimer;       //Dient dazu um den acornTimer später wieder zun urpünglichen Wert zurückzusetzen
+
+    int acornAmount = 10;       //Anzahl der Eicheln die in einer Attacke gespawnt werden
 
     //Spawnrate für Waffen
     public int maxRandomValue;
@@ -32,6 +39,9 @@ public class EnemySpawnSystem : MonoBehaviour
 
         //Spawnrate von Waffen
         maxRandomValue = 8;
+
+        //Speichert den urspünglichen acornTimer Wert
+        saveAcornTimer = acornTimer;
     }
 
     // Update is called once per frame
@@ -162,4 +172,42 @@ public class EnemySpawnSystem : MonoBehaviour
     {
         killCounter = killCounter + 1;
     }
+
+    //Methode für das Spawnen von Eicheln (Endboss Attacke)
+    public bool AcornAttack()
+    {
+        while (acornAmount > 0) {
+
+            //acornTimer wird runtergezählt (Countdown für das Spawnen der nächsten Eichel)
+            acornTimer -= Time.deltaTime;
+
+            //timer <= 0, Gegner wird gespawnt
+            if (acornTimer <= 0)
+            {
+                //Der spawnpoint wird zufalls generiert
+                spawnPoint.x = Random.Range(spawnPointLeft.position.x, spawnPointRight.position.x);
+                spawnPoint.y = Random.Range(spawnPointLeft.position.y, spawnPointRight.position.y);
+
+                Instantiate(acorn, spawnPoint, transform.rotation);
+
+                //Der acornTimer wird wieder zum ursprünglichen Wert zurückgesetzt
+                acornTimer = saveAcornTimer;
+            }
+
+            //Es wird nach dem Spieler gesucht, wird dieser nicht gefunden ist er tot und das Spawnscipt deaktiviert sich
+            if (GameObject.FindGameObjectWithTag("Player") == null)
+            {
+                //Script wird deaktiviert
+                gameObject.GetComponent<EnemySpawnSystem>().enabled = false;
+            }
+
+            //Zeigt an das die Attacke noch nicht beendet wurde
+            return false;
+        }
+
+        //Es wird true zurückgegeben
+        //Dies gibt dem Endboss Bescheid, dass diese Attacke beendet wurde und dieser nun eine neue Attacke starten kanns
+        return true;
+    }
 }
+

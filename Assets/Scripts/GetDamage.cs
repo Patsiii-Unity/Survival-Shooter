@@ -14,7 +14,11 @@ public class GetDamage : MonoBehaviour
     public GameObject oneHeart;
     public GameObject zeroHearts;
 
+    //Für abspielen von Audiodateien
     public AudioManager audioManager;
+
+    //Für Shake Animationen der Camera
+    public Shake shakeManager;
 
     int randomSoundNum;
 
@@ -24,6 +28,7 @@ public class GetDamage : MonoBehaviour
     void Start()
     {
         safeCooldown = cooldown;
+        cooldown = 0;
     }
 
     // Update is called once per frame
@@ -104,6 +109,23 @@ public class GetDamage : MonoBehaviour
         if(collisionInfo.gameObject.tag == "Enemy" && cooldown < 0)
         {
             health -= 1;
+
+            //Sound
+            audioManager.Play("Damage");
+
+            //Camera Shake bei Kontakt mit dem "Enemy"
+            shakeManager.EnemyShake();
+
+            //cooldown wird zurückgesetzt
+            cooldown = safeCooldown;
+        }
+    }
+
+    public void getDamage(int damage)
+    {
+        if (cooldown < 0)
+        {
+            health -= damage;
 
             //Sound
             audioManager.Play("Damage");
